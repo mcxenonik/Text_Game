@@ -8,8 +8,17 @@ class Player():
     :type lives: int
     """
     def __init__(self, name, lives=1):
-        self.name = name
+        self._name = name
         self.lives = lives
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, new_name):
+        if (not new_name):
+            raise ValueError('Name cannot be empty')
+        else:
+            self._name = str(new_name).title()
 
     def info(self):
         """
@@ -21,7 +30,7 @@ class Player():
         #     return f'My name is {self.name}. I have {self.lives} lives left'
         lives = 'life' if (self.lives == 1) else 'lives'
 
-        return f'My name is {self.name}. I have {self.lives} {lives} left'
+        return f'My name is {self._name}. I have {self.lives} {lives} left'
 
     def __str__(self):
         return self.info()
